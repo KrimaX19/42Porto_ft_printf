@@ -18,7 +18,7 @@ Flags:
     %+d - %+f coloca sempre o sinal no numero
 
 ' ' - Adiciona espaço se nenhum sinal antes do valor
-    % d - Serve para alinhar numeros por varios motivos, sendo um os sinais dos numeros
+    % d - Serve para alinhar numeros por varios motivos, sendo um dos sinais dos numeros
     Exemplo: 
     printf("Numero: %+d", 42) R: +42, 
     printf("Numero: %+d", -42) R: -42,
@@ -117,4 +117,22 @@ Manage all the following flags: '# +' ("Cardinal, espaço e mais")
 '+' = Coloca um sinal em todos os valores sejam positivos ou negativos
 ' ' = Coloca um espaço quando o sinal é positivo, e ignora quando é negativo
 
+
+
+
+1º passo:
+
+    Criar uma função que vai ler os argumentos que recebe e direcionar para a função pretendida
+
+
+2ª passo:
+
+    Fazer as funções para os especificadores
+    Verificar se consigo integrar com as flags futuramente
+
+3º passo:
+
+    Fazer o codigo das flags para integrar com os especificadores
+
+4º passo:
 */
