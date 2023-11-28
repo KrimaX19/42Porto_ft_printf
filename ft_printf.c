@@ -6,7 +6,7 @@
 /*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:15:03 by rusoares          #+#    #+#             */
-/*   Updated: 2023/11/28 22:10:55 by rusoares         ###   ########.fr       */
+/*   Updated: 2023/11/28 22:29:22 by rusoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ int	main(void)
 	printf("   PRINTF: X %X:\n", 42);
 	ft_printf("FT_PRINTF: x %x:\n", 42);
 	printf("   PRINTF: x %x:\n", 42);
+	//printf("%sx%d");
 	return (0);
 }
 
@@ -209,3 +210,15 @@ int	ft_toupper(int c)
 	}
 	return (c);
 }
+
+
+/*
+codigo esta criado de forma a poder verificar se a tring tem o sinal % e apos
+verificar qual e o especificador. Depois disso executa uma funcao associada ao especificador.
+Posso usar funcoes ja criadas como tambem terei de usar funcoes para casos especiais.
+
+Proximos passos:
+- Avaliar como posso integrar as flags de bonus
+	verificar se ira mudar muito o codigo u se sera de facil implementacao
+		Usar um especificador como exemplo
+*/
