@@ -7,4 +7,4 @@
 4 - keep coding
 5 - test
 6 - Repair and test
-7 - keep testng and debbuging
+7 - keep testing and debbuging

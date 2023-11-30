@@ -6,7 +6,7 @@
 /*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:15:03 by rusoares          #+#    #+#             */
-/*   Updated: 2023/11/28 22:29:22 by rusoares         ###   ########.fr       */
+/*   Updated: 2023/11/30 23:35:46 by rusoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,19 @@ INIT - %x ou X (print Hex com to upper ou tolower (unsigned int)
 %u (print unsigned) (unsigned int)
 
 em cada uma das funcoes tenho de alocar memoria para as variaveis que vou manipular e dar free.
+Resolvido:
+
+- Flag + no especificador d, funciona
+- Flag ' ' no especificador d, funciona
+- Especificadores sem espacos entre eles (ex: %d%d%d%d)
+	- R: resolvido com um while loop
 
 Problemas a resolver:
 
-- especificadores sem espacos entre eles (ex: %d%d%d%d)
-	- R: resolvido com um while loop
+- Field minimum with nao funciona
+	- Tenho de aprender a fazer com uma rotina para executar x vezes.
+	- Posso usar um contador de numeros para ver o comprimento do numero e fazer um putnbr com tamanho
+		- Se o numero for maior que o fmw coloco os espaco que manda e depois 
 - criar link entre as funcoes do libft e o printf
 - criar o makefile
 - criar funcao para converter de decimal para hexadecimal
@@ -51,12 +59,12 @@ Problemas a resolver:
 
 */
 
-int	decimal(char *value);
-void	ft_putnbr_fd(int n, int fd);
+//int	decimal(char *value);
+void	ft_putnbr_fd(int n, int fd, int flg, unsigned long count);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
-int	ft_tolower(int c);/*nao preciso pois no momento de escrever basta escolher o caracter a*/
-int	ft_toupper(int c);/*nao preciso pois no momento de escrever basta escolher o caracter A*/
+//int	ft_tolower(int c);/*nao preciso pois no momento de escrever basta escolher o caracter a*/
+//int	ft_toupper(int c);/*nao preciso pois no momento de escrever basta escolher o caracter A*/
 
 int	test(int c)
 {
@@ -64,9 +72,9 @@ int	test(int c)
 	return (1);
 }
 
-int	testd(int d)
+int	testd(int d, int flgplus)
 {
-	ft_putnbr_fd(d, 1);
+	ft_putnbr_fd(d, 1, flgplus,0);
 	return(2);
 }
 
@@ -77,13 +85,13 @@ int	tests(char *s)
 }
 int	testX(unsigned int x)
 {
-	ft_putnbr_fd(ft_tolower(x), 1);
+	ft_putnbr_fd(x, 0, 0,0);
 	return (4);
 }
 
 int	testx(unsigned int x)
 {
-	ft_putnbr_fd(ft_toupper(x), 1);
+	ft_putnbr_fd(x, 0, 0, 0);
 	return (4);
 }
 
@@ -92,15 +100,27 @@ int ft_printf(const char *str, ...)
 	int	i;
 	int	length;
 	va_list	ptr;
+	int	flgplus;
 
 	i = 0;
 	length = 0;
+	flgplus = 0;
 	va_start(ptr, str);
 	while (str[i])
 	{
 		while(str[i] == '%')
 		{
 			i++;
+			if(str[i] == '+')
+			{
+				flgplus = '+';
+				i++;
+			}
+			if(str[i] == ' ')
+			{
+				flgplus = ' ';
+				i++;
+			}
 			if (str[i] == 'c')
 			{
 				length = test(va_arg(ptr, int));
@@ -111,7 +131,7 @@ int ft_printf(const char *str, ...)
 			}
 			if (str[i] == 'd')
 			{
-				length = testd(va_arg(ptr, int));
+				length = testd(va_arg(ptr, int), flgplus);
 			}
 			if(str[i] == 's')
 			{
@@ -120,11 +140,7 @@ int ft_printf(const char *str, ...)
 			if(str[i] == 'x')
 			{
 				length = testx(va_arg(ptr, unsigned int));
-			}
-			if(str[i] == 'X')
-			{
-				length = testx(va_arg(ptr, unsigned int));
-			}
+			}  
 			i++;			
 		}
 		write(1, &str[i], 1);
@@ -133,16 +149,23 @@ int ft_printf(const char *str, ...)
 	return (length);
 }
 
+
 int	main(void)
 {
 	ft_printf("FT_PRINTF: %c, %c, %%:\n", 'A','b');
 	printf("   PRINTF: %c, %c, %%:\n", 'A','b');
 	ft_printf("FT_PRINTF: %%:\n");
 	printf("   PRINTF: %%:\n");
-	ft_printf("FT_PRINTF: %d%d%d%d\n", 1102515,12354,98756,-15131);/*verificar como fazer para nao ver os espacos*/
-	printf("   PRINTF: %d%d%d%d\n", 1102515,12354,98756,-15131);
+	ft_printf("FT_PRINTF: %d %d %d %d\n", 1102515,12354,98756,-15131);/*teste de numeros decimais*/
+	printf("   PRINTF: %d %d %d %d\n", 1102515,12354,98756,-15131);
+	ft_printf("FT_PRINTF: %+d %+d %+d %+d\n", 1102515,12354,98756,-15131);/*teste de numeros decimais com sinal de +*/
+	printf("   PRINTF: %+d %+d %+d %+d\n", 1102515,12354,98756,-15131);
+	ft_printf("FT_PRINTF: % d % d % d % d\n", 1102515,12354,98756,-15131);/*teste de numeros decimais com espaco*/
+	printf("   PRINTF: % d % d % d % d\n", 1102515,12354,98756,-15131);
+	ft_printf("FT_PRINTF: %5d %5d %5d %5d\n", 15,154,9756,-15131);/*teste de numeros decimais com fmw de 5*/
+	printf("   PRINTF: % 5d %5d %5d %5d\n", 15,154,9756,-15131);/*faz while enquanto este numero ou aloca so 5 espacos*/
 	ft_printf("FT_PRINTF: %s:\n", "Teste string");
-	printf("   PRINTF: %s:\n", "Teste string");
+	printf("   PRINTF: %ss:\n", "Teste string");
 	ft_printf("FT_PRINTF: X %X:\n", 42);
 	printf("   PRINTF: X %X:\n", 42);
 	ft_printf("FT_PRINTF: x %x:\n", 42);
@@ -151,25 +174,50 @@ int	main(void)
 	return (0);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd, int flg, unsigned long count)
 {
 	unsigned long	nb;
 
 	nb = n;
-	if (n < 0)
+	if (flg == '+' || flg == ' ')
+	{
+		if (nb > 1)
+		{
+		ft_putchar_fd(flg,fd);
+		}
+	}
+	if (nb < 0)
 	{
 		ft_putchar_fd('-', fd);
 		nb = -1 * nb;
 	}
-	if (nb >= 10)
+	while(nb == count)
 	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd(nb % 10, fd);
+		while (nb >= 10)
+		{
+			n = nb / 10;
+			n = nb % 10;
+		}
 	}
-	else
+}
+
+/* alterar o putnbr para nao fazer recusrsiva 
+e so fazer durante o count number ou o numero de vezes que disser
+que sera dado pelo fmw ou pelo count number*/
+
+int	countnb(int nb)
+{
+	int	i;
+	int n;
+
+	i = 0;
+	n = nb;
+	while (n)
 	{
-		ft_putchar_fd(nb + '0', fd);
+		n = n/10;
+		i++;
 	}
+	return (i);
 }
 
 void	ft_putchar_fd(char c, int fd)
@@ -191,7 +239,7 @@ void	ft_putstr_fd(char *s, int fd)
 		}
 	}
 }
-
+/*
 int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
@@ -211,9 +259,9 @@ int	ft_toupper(int c)
 	return (c);
 }
 
-
+*/
 /*
-codigo esta criado de forma a poder verificar se a tring tem o sinal % e apos
+codigo esta criado de forma a poder verificar se a string tem o sinal % e apos
 verificar qual e o especificador. Depois disso executa uma funcao associada ao especificador.
 Posso usar funcoes ja criadas como tambem terei de usar funcoes para casos especiais.
 
@@ -221,4 +269,9 @@ Proximos passos:
 - Avaliar como posso integrar as flags de bonus
 	verificar se ira mudar muito o codigo u se sera de facil implementacao
 		Usar um especificador como exemplo
+*/
+
+/*
+Se for %, verificar se tem alguma flag
+se tiver flag, fazer alguma coisa ou executar a funcao com mais um parametro
 */

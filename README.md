@@ -139,6 +139,8 @@ Largura minima:
         Se o numero = ao espaço não coloca zeros nem espaços
 
 
+fmw 
+
 
 Manage all the following flags: '# +' ("Cardinal, espaço e mais")
 '#' = altera as funções conforme os especificadores
