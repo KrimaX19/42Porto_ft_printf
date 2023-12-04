@@ -5,23 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/27 19:09:32 by rusoares          #+#    #+#              #
-#    Updated: 2023/11/27 19:35:47 by rusoares         ###   ########.fr        #
+#    Created: 2023/11/26 16:48:26 by rusoares          #+#    #+#              #
+#    Updated: 2023/11/26 16:48:26 by rusoares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS:
+SRCS = ft_printf.c \
+ft_conv.c
 
 OBJS = $(SRCS:.c=.o)
 
-BSCRS:
-
-BOBJS = $(BSCRS:.c=.o)
+#BONUS = 
+#BOBJS = $(BONUS:.c=.o)
 
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-NAME = libftprintf.a
-
+NAME = ft_printf.a
 
 all: $(NAME)
 
@@ -29,17 +28,17 @@ all: $(NAME)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+#	ar rcs $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS) $(BOBJS)
+	rm -f $(OBJS) 
 
 fclean:
-	rm -f $(OBJS) $(BOBJS)
+	rm -f $(NAME)
 
 re: fclean all
 
-bonus: $(BOBJS)
-	ar rcs $(NAME) $(BOBJS)
+#bonus:
 
 PHONY: all clean fclean re
