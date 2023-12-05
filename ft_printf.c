@@ -6,7 +6,7 @@
 /*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:15:03 by rusoares          #+#    #+#             */
-/*   Updated: 2023/11/30 23:35:46 by rusoares         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:17:54 by rusoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ int	main(void)
 	ft_printf("FT_PRINTF: %5d %5d %5d %5d\n", 15,154,9756,-15131);/*teste de numeros decimais com fmw de 5*/
 	printf("   PRINTF: % 5d %5d %5d %5d\n", 15,154,9756,-15131);/*faz while enquanto este numero ou aloca so 5 espacos*/
 	ft_printf("FT_PRINTF: %s:\n", "Teste string");
-	printf("   PRINTF: %ss:\n", "Teste string");
+	printf("   PRINTF: %s:\n", "Teste string");
 	ft_printf("FT_PRINTF: X %X:\n", 42);
 	printf("   PRINTF: X %X:\n", 42);
 	ft_printf("FT_PRINTF: x %x:\n", 42);
