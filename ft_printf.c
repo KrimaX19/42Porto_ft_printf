@@ -6,7 +6,7 @@
 /*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:15:03 by rusoares          #+#    #+#             */
-/*   Updated: 2024/01/08 21:39:13 by rusoares         ###   ########.fr       */
+/*   Updated: 2024/01/08 22:02:39 by rusoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-void	ft_putnbr_fd(int n, int fd, int flg, unsigned long count);
+void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
@@ -24,9 +24,9 @@ int	test(int c)
 	return (1);
 }
 
-int	testd(int d, int flgplus)
+int	testd(int d)
 {
-	ft_putnbr_fd (d, 1, flgplus, 0);
+	ft_putnbr_fd (d, 1);
 	return (2);
 }
 
@@ -45,7 +45,7 @@ int	test_x (unsigned int x)
 
 int	testx(unsigned int x)
 {
-	ft_putnbr_fd (x, 0, 0, 0);
+	ft_putnbr_fd (x, 0);
 	return (4);
 }
 
@@ -54,11 +54,9 @@ int	ft_printf(const char *str, ...)
 	int		i;
 	int		length;
 	va_list	ptr;
-	int		flgplus;
 
 	i = 0;
 	length = 0;
-	flgplus = 0;
 	va_start(ptr, str);
 	while (str[i])
 	{
@@ -67,12 +65,10 @@ int	ft_printf(const char *str, ...)
 			i++;
 			if (str[i] == '+')
 			{
-				flgplus = '+';
 				i++;
 			}
 			if (str[i] == ' ')
 			{
-				flgplus = ' ';
 				i++;
 			}
 			if (str[i] == 'c')
@@ -85,7 +81,7 @@ int	ft_printf(const char *str, ...)
 			}
 			if (str[i] == 'd')
 			{
-				length = testd(va_arg(ptr, int), flgplus);
+				length = testd(va_arg(ptr, int));
 			}
 			if (str[i] == 's')
 			{
@@ -103,9 +99,10 @@ int	ft_printf(const char *str, ...)
 	return (length);
 }
 
-/*
+
 int	main(void)
 {
+	printf("c\n");
 	ft_printf("%c\n", '0');
 	printf("%c\n", '0');
 	ft_printf(" %c \n", '0');
@@ -124,50 +121,51 @@ int	main(void)
 	printf(" %c %c %c \n", '2', '1', 0);
 	ft_printf(" %c %c %c \n", 0, '1', '2');
 	printf(" %c %c %c \n", 0, '1', '2');
-
+	printf("%%\n");
+	ft_printf("FT_PRINTF: %%:\n");
 	printf("   PRINTF: %%:\n");
-	ft_printf("FT_PRINTF: %d %d %d %d\n", 1102515,12354,98756,-15131);
-	printf("   PRINTF: %d %d %d %d\n", 1102515,12354,98756,-15131);
-	ft_printf("FT_PRINTF: %+d %+d %+d %+d\n", 1102515,12354,98756,-15131);
-	printf("   PRINTF: %+d %+d %+d %+d\n", 1102515,12354,98756,-15131);
-	ft_printf("FT_PRINTF: % d % d % d % d\n", 1102515,12354,98756,-15131);
-	printf("   PRINTF: % d % d % d % d\n", 1102515,12354,98756,-15131);
-	ft_printf("FT_PRINTF: %5d %5d %5d %5d\n", 15,154,9756,-15131);
-	printf("   PRINTF: % 5d %5d %5d %5d\n", 15,154,9756,-15131);
+	ft_printf("FT_PRINTF: %%%%:\n");
+	printf("   PRINTF: %%%%:\n");
+	ft_printf("FT_PRINTF: %% %% %%:\n");
+	printf("   PRINTF: %% %% %%:\n");
+	printf("d\n");
+	ft_printf("FT_PRINTF: :%d:\n", 0);
+	printf("   PRINTF: :%d:\n", 0);
+	ft_printf("FT_PRINTF: :%d:\n",-1);
+	printf("   PRINTF: %d\n",-1);
+	ft_printf(": %d :\n", 100);
+	printf(": %d :\n", 100);
+	printf("s\n");
 	ft_printf("FT_PRINTF: %s:\n", "Teste string");
 	printf("   PRINTF: %s:\n", "Teste string");
+	printf("X\n");
 	ft_printf("FT_PRINTF: X %X:\n", 42);
 	printf("   PRINTF: X %X:\n", 42);
+	printf("x\n");
 	ft_printf("FT_PRINTF: x %x:\n", 42);
 	printf("   PRINTF: x %x:\n", 42);
 	return (0);
 }
-*/
 
-void	ft_putnbr_fd(int n, int fd, int flg, unsigned long count)
+
+void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned long	nb;
 
 	nb = n;
-	if (flg == '+' || flg == ' ')
-	{
-		if (nb > 1)
-		{
-			ft_putchar_fd(flg, fd);
-		}
-	}
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
 		nb = -1 * nb;
 	}
-	while (nb == count)
+	if (nb >= 10)
 	{
-		while (nb >= 10)
-		{
-			n = nb / 10;
-			n = nb % 10;
-		}
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
+	else
+	{
+		ft_putchar_fd(nb + '0', fd);
 	}
 }
 
