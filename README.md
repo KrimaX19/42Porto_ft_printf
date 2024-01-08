@@ -1,19 +1,8 @@
-Printf function 
+Erros:
+    - Francinette nao esta a dar ok, apesar de a funcao estar a mostrar os valores corretos
+        *- Verificar a contagem de caracteres, pois o printf retorna o numero de caracteres,
 
-Posso usar as funcoes:
-- Write, free, malloc, va_start, va_arg, va_copy, va_end
-
-
-- Preciso de definir o struct na lib
-
-- Preciso de criar um loop para percorrer a string e verificar se nao e %
-    quando encontrar saberei que tenho algo para imprimir
-
-- Criar uma tabela com as opcoes para quando encontrar o % direcionar para la
-
-
-- Fazer um double sempre, e esperar pelo valor do especifier para escrever o numeor de casas decimais que pretendem
-
+        
 
 Conversões
 
