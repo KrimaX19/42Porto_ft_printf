@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   imp.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/08 19:13:55 by rusoares          #+#    #+#             */
+/*   Updated: 2024/01/08 19:13:55 by rusoares         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -5,7 +17,7 @@
 void	ft_putchar(char s);
 void	ft_putchar_esp(int nb);
 int		prtf(char *s );
-
+/*
 int	main(void)
 {
 	int		i = 0;
@@ -16,7 +28,7 @@ int	main(void)
 	int		totalimp = lenght - caracteres;
 
 
-	/*primeiro imprimir a string depois os espacos*/
+	/*primeiro imprimir a string depois os espacos*//*
 	if (inv == 0)
 	{
 		while (caracteres != 0)
@@ -29,14 +41,14 @@ int	main(void)
 		ft_putchar(':');
 		ft_putchar('\n');
 	}
-	/*imprimir primeiro so espacos depois a string*/
+	/*imprimir primeiro so espacos depois a string*//*
 	inv = 1;
 	i = 0;
 	caracteres = 2;
 	if (inv == 1)
 	{
 		ft_putchar_esp(totalimp);
-		while (caracteres != 0)/*while dif Null ou o com dos espacos - o com da str*/
+		while (caracteres != 0)/*while dif Null ou o com dos espacos - o com da str*//*
 		{
 			ft_putchar(s[i]);
 			i++;
@@ -49,6 +61,7 @@ int	main(void)
 	printf("%10.2s:\n", "teste");
 	return (0);
 }
+*/
 
 void	ft_putchar(char s)
 {
@@ -59,7 +72,7 @@ void	ft_putchar_esp(int nb)
 {
 	while (nb != 0)
 	{
-		write (1, " " , 1);
+		write (1, " ", 1);
 		nb--;
 	}
 }

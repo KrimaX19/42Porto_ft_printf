@@ -6,7 +6,7 @@
 /*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:22:31 by rusoares          #+#    #+#             */
-/*   Updated: 2023/12/05 22:08:26 by rusoares         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:10:39 by rusoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ long	conver(long n);
 char	*ft_itoa(unsigned int n, int base);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
-int	reverse(int n);
+int		reverse(int n);
 
-int ft_printf_hex(int number)
+int	ft_printf_hex(int number)
 {
-	int resto;
-	int result;
-	int rev;
-	
+	int	resto;
+	int	result;
+	int	rev;
+
 	rev = 0;
 	result = 0;
 	resto = 1;
@@ -36,7 +36,7 @@ int ft_printf_hex(int number)
 		resto = number % 16;
 		if (resto != 0)
 			result *= 10;
-		if(resto > 10)
+		if (resto > 10)
 			resto = resto + 55;
 		else
 			resto = resto;
@@ -51,17 +51,16 @@ int ft_printf_hex(int number)
 
 int	reverse(int n)
 {
-	int resto;
+	int	resto;
 	int	resultado;
 
 	resto = 0;
 	while (n < 0)
 	{
-		
 	}
-	return (resultado);	
+	return (resultado);
 }
-
+/*
 int	main()
 {
 	int i;
@@ -82,21 +81,18 @@ int	main()
 	write (1, &t, 1);
 	return (0);
 }
+*/
 
 char	*ft_itoa(unsigned int n, int base)
 {
 	int		i;
-	//int		neg;
 	long	nb;
 	char	*conv;
 
 	nb = conver(n);
-	//neg = negativo(n);
 	i = conta(n);
 	if (n == 0)
 		i = 1;
-//	if (neg == 1)
-	//	i++;
 	conv = malloc (sizeof (char) * i + 1);
 	if (!conv)
 		return (NULL);
@@ -113,11 +109,8 @@ char	*ft_itoa(unsigned int n, int base)
 		}
 		nb /= base;
 	}
-//	if (i == 0 && neg == 1)
-//		conv[i] = '-';
 	return (conv);
 }
-
 
 int	conta(int n)
 {
@@ -131,16 +124,7 @@ int	conta(int n)
 	}
 	return (i);
 }
-/*
-int	negativo(int n)
-{
-	if (n < 0)
-	{
-		return (1);
-	}
-	return (0);
-}
-*/
+
 long	conver(long n)
 {
 	long	nb;
@@ -173,6 +157,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(nb + 48, fd);
 	}
 }
+
 void	ft_putchar_fd(char c, int fd)
 {
 	if (fd > 0)

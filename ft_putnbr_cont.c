@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_cont.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/08 18:57:52 by rusoares          #+#    #+#             */
+/*   Updated: 2024/01/08 20:39:53 by rusoares         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
@@ -11,7 +22,7 @@ void	ft_putnbr_fd(int n, int fd, int flg, int count)
 	{
 		if (nb > 1)
 		{
-		ft_putchar_fd(flg,fd);
+			ft_putchar_fd (flg, fd);
 		}
 	}
 	if (nb < 0)
@@ -23,8 +34,8 @@ void	ft_putnbr_fd(int n, int fd, int flg, int count)
 	{
 		if (nb >= 10)
 		{
-			ft_putnbr_fd(nb / 10, fd, 0);
-			ft_putnbr_fd(nb % 10, fd, 0);
+			ft_putnbr_fd(nb / 10, fd, 0, 0);
+			ft_putnbr_fd(nb % 10, fd, 0, 0);
 		}
 		else
 		{

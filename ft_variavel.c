@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_variavel.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/08 19:11:30 by rusoares          #+#    #+#             */
+/*   Updated: 2024/01/08 19:13:06 by rusoares         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -5,10 +17,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-/*
-funcao para ler o argumento e alocar nas variaveis corretas
-Exemplo: %10.2s
-*/
 int	variavel(const char *s)
 {
 	int	i;
@@ -20,13 +28,11 @@ int	variavel(const char *s)
 	precision = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == '%') // comecar a fazer a leitura 
+		if (s[i] == '%')
 		{
-			fmw = atoi(&s[i+1]);
+			fmw = atoi (&s[i + 1]);
 			while (s[i] != '.')
-			{
 				i++;
-			}
 		}
 		if (s[i] == '.')
 		{
@@ -37,22 +43,12 @@ int	variavel(const char *s)
 		write(1, &s[i], 1);
 		i++;
 	}
-	printf("\nfmw:%d:\n", fmw);
-	printf("Pre:%d:\n", precision);
 	return (0);
 }
+/*
 int	main()
 {
-	variavel("Teste:%10.2s:");
+	variavel ("Teste:%10.2s:");
 	return (0);
 }
-
-
-
-/*
-Enquanto for diferente do especificador.
-	Condicoes:
-		Se for digito (Atoi so no primeiro)
-		Se tiver ponto ()
-		Se tiver digito depois do ponto (atoi so no primeiro)
 */

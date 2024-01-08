@@ -10,8 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c \
-ft_conv.c
+SRCS = ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -19,8 +18,8 @@ OBJS = $(SRCS:.c=.o)
 #BOBJS = $(BONUS:.c=.o)
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror
-NAME = ft_printf.a
+FLAGS = -Wall -Wextra -Werror -c -I.
+NAME = libftprintf.a
 
 all: $(NAME)
 
@@ -29,16 +28,16 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
-#	ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS) 
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
 #bonus:
 
-PHONY: all clean fclean re
+PHONY: all bonus clean fclean re
