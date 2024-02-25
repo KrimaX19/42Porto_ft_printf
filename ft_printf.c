@@ -6,13 +6,14 @@
 /*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:15:03 by rusoares          #+#    #+#             */
-/*   Updated: 2024/01/08 22:02:39 by rusoares         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:32:35 by rusoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include "../42Porto_ft_printf/libft/src"
 
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
