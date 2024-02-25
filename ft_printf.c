@@ -6,14 +6,14 @@
 /*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:15:03 by rusoares          #+#    #+#             */
-/*   Updated: 2024/02/25 16:32:35 by rusoares         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:32:56 by rusoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
-#include "../42Porto_ft_printf/libft/src"
+//#include "../42Porto_ft_printf/libft/src"
 
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
@@ -59,6 +59,7 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	length = 0;
 	va_start(ptr, str);
+
 	while (str[i])
 	{
 		while (str[i] == '%')
@@ -100,10 +101,10 @@ int	ft_printf(const char *str, ...)
 	return (length);
 }
 
-
 int	main(void)
 {
 	printf("c\n");
+    ft_printf("c\n");
 	ft_printf("%c\n", '0');
 	printf("%c\n", '0');
 	ft_printf(" %c \n", '0');
@@ -122,6 +123,7 @@ int	main(void)
 	printf(" %c %c %c \n", '2', '1', 0);
 	ft_printf(" %c %c %c \n", 0, '1', '2');
 	printf(" %c %c %c \n", 0, '1', '2');
+    ft_printf("%%\n");
 	printf("%%\n");
 	ft_printf("FT_PRINTF: %%:\n");
 	printf("   PRINTF: %%:\n");
@@ -147,6 +149,7 @@ int	main(void)
 	printf("   PRINTF: x %x:\n", 42);
 	return (0);
 }
+
 
 
 void	ft_putnbr_fd(int n, int fd)
