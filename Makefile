@@ -10,15 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c \
+ft_printf_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
-#BONUS = 
-#BOBJS = $(BONUS:.c=.o)
-
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c 
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -c
 NAME = libftprintf.a
 
 all: $(NAME)
@@ -36,8 +34,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-#so:
-#	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-#	cc -nostartfiles -shared -o libft.so $(OBJS)
 
-#bonus:
+.PHONY: all clean fclean re
