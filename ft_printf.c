@@ -6,7 +6,7 @@
 /*   By: rusoares <rusoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:15:03 by rusoares          #+#    #+#             */
-/*   Updated: 2024/05/01 00:38:51 by rusoares         ###   ########.fr       */
+/*   Updated: 2024/05/09 07:37:09 by rusoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%' && ++i)
-		{
 			lenght += ft_conversion(str[i], ptr);
-		}
 		else
 			lenght += write(1, &str[i], 1);
 		i++;
