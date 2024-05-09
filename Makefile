@@ -25,7 +25,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $< -o $@
 
 $(NAME): $(OBJS)
-	ar -r $(NAME) $(OBJS)
+	ar rc $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS) 
