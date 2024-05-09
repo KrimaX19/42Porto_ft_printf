@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-
 /*Funcoes*/
 int	ft_putnbr_fd(long int n, int fd);
 int	ft_putchar_fd(char c, int fd);
