@@ -15,11 +15,9 @@
 
 /*librarias*/
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
 
-/*Struct*/
 
 /*Funcoes*/
 int	ft_putnbr_fd(long int n, int fd);
